@@ -1,0 +1,14 @@
+---
+- name: Update APT Packages
+  hosts: all
+  become: true  # This enables privilege escalation (sudo)
+  tasks:
+    - name: Update APT cache
+      apt:
+        update_cache: yes
+
+    - name: Upgrade APT packages
+      apt:
+        upgrade: safe
+        autoremove: yes
+        autoclean: yes
